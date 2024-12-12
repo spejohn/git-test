@@ -1,5 +1,5 @@
 # Build stage
-FROM python:3.12-slim-buster as builder
+FROM python:3.12-slim-bookworm as builder
 
 # Install build dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -21,7 +21,7 @@ RUN pip install --no-cache-dir \
     mageck
 
 # Final stage
-FROM python:3.12-slim-buster
+FROM python:3.12-slim-bookworm
 
 # Copy virtual environment from builder
 COPY --from=builder /opt/venv /opt/venv
